@@ -14,6 +14,7 @@
   import Checkbox from './Checkbox.svelte';
   import File from './File.svelte';
   import Message from './Message.svelte';
+  import Header from "./Header.svelte";
 
   // Declar variables;
   export let fields = [];
@@ -113,6 +114,8 @@
       <Checkbox {field} on:changeValue={changeValueHander} />
     {:else if field.type === 'file'}
       <File {field} on:changeValue={changeValueHander} />
+    {:else if field.type === 'header'}
+      <Header {field}  />
     {/if}
 
     <!-- Description -->

@@ -1,5 +1,5 @@
 {
-  "name": "svelte-formly",
+  "name": "@Techarge/svelte-formly",
   "svelte": "src/index.js",
   "main": "dist/svelteformly.js",
   "module": "dist/svelteformly.es.js",
@@ -11,7 +11,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/arabdevelop/svelte-formly"
+    "url": "https://github.com/Techarge/svelte-formly"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "preinstall": "[ -z \"$NPM_TOKEN\" ] && echo 'local' || echo \"//registry.npmjs.org/:_authToken=${NPM_TOKEN}\" > .npmrc",
@@ -42,7 +45,7 @@
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
-    "postcss": "^7.0.17",
+    "postcss": "^7.0.36",
     "rollup": "^1.19.4",
     "rollup-plugin-browsersync": "^1.0.0",
     "rollup-plugin-commonjs": "^10.0.2",

@@ -75,7 +75,7 @@
                             checked={item.value === field.value}
                             on:input={onChangeValue}
                     />
-                    <span class="ml-0 mr-5">{item.title}</span>
+                    <label for={item.id} class="ml-0 mr-5">{item.title}</label>
                 </div>
             {/each}
         </div>
@@ -96,7 +96,7 @@
                     checked={item.value === field.value}
                     on:input={onChangeValue}
             />
-            <span>{item.title}</span>
+            <label for={item.id}>{item.title}</label>
         </div>
     {/each}
 {/if}

@@ -1,10 +1,10 @@
 function isRequired (field) {
   if (field.rules) {
     if (field.rules.length > 0) {
-      return true
+      return 'required' in field.rules
     }
   }
-  return false
+  return false;
 }
 
 function isArray (arr) {

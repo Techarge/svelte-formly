@@ -1,6 +1,7 @@
 <script>
     import {afterUpdate, createEventDispatcher, onMount} from 'svelte';
     import clsx from 'clsx';
+    import {isRequired} from "../lib/helpers";
 
     // Declar variables.
     export let field = {};
@@ -70,6 +71,7 @@
                             id={item.id}
                             name={field.name}
                             value={item.value}
+                            required={isRequired(field)}
                             checked={item.value === field.value}
                             on:input={onChangeValue}
                     />

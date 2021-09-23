@@ -119,6 +119,8 @@
             <File {field} on:changeValue={changeValueHander}/>
         {:else if field.type === 'header'}
             <Header {field}/>
+        {:else if field.type === 'sectionheader'}
+            <Header {field}/>
         {/if}
 
         <!-- Description -->

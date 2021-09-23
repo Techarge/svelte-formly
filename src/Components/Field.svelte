@@ -16,8 +16,9 @@
     import Message from './Message.svelte';
     import Header from "./Header.svelte";
     import RadioMulti from "./RadioMulti.svelte";
+    import Footer from "./Footer.svelte";
 
-    // Declar variables;
+    // Declare variables;
     export let fields = [];
     let isValidForm = true;
     let values = {};
@@ -87,12 +88,16 @@
       ? field.prefix.classes
         ? field.prefix.classes
         : 'form-group'
-      : 'form-group'}
+      : 'svelte-' + field.type}
     >
         <!-- Label -->
         {#if field.attributes}
             {#if field.attributes.label}
+                {#if field.type === "footer"}
+                    <label for={field.id} class="footer-text">{field.attributes.label}</label>
+                    {:else}
                 <label for={field.id} class="label">{field.attributes.label}</label>
+                    {/if}
             {/if}
         {/if}
 
@@ -121,6 +126,8 @@
             <Header {field}/>
         {:else if field.type === 'sectionheader'}
             <Header {field}/>
+        {:else if field.type === 'footer'}
+            <Footer {field}/>
         {/if}
 
         <!-- Description -->

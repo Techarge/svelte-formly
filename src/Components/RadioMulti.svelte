@@ -78,35 +78,38 @@
 {:else}
     <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-around">
         <div></div>
-        {#each items as item, i}
-            <div>
-                { item.title }
+        {#if field.error}
+            <div class="grid grid-flow-row grid-cols-1">
+                <div class="italic text-red-400">{field.error}</div>
             </div>
+        {/if}
+        {#each items as item, i}
+                {item.title}
         {/each}
         {#each topics as topic, t}
             <div>
                 {topic.title}
-                </div>
-                {#each items as item, i}
-                    <div
-                            id={topic.id}
-                            class="{field.extra.aligne === 'inline'
+            </div>
+            {#each items as item, i}
+                <div
+                        id={topic.id}
+                        class="{field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}"
-                    >
-                        <input
-                                type="radio"
-                                class="{classe} ml-0 "
-                                id={topic.id}-{item.id}
-                                name={topic.id}
-                                value={item.value}
-                                required={isRequired(field)}
-                                checked={topic.value === field.value}
-                                on:input={onChangeValue}
-                        />
-                        <label for={topic.id}-{item.id} class="ml-0 mr-5">{item.title}</label>
-                    </div>
-                {/each}
+                >
+                    <input
+                            type="radio"
+                            class="{classe} ml-0 "
+                            id={topic.id}-{item.id}
+                            name={topic.id}
+                            value={item.value}
+                            required={isRequired(field)}
+                            checked={topic.value === field.value}
+                            on:input={onChangeValue}
+                    />
+                    <label for={topic.id}-{item.id} class="ml-0 mr-5">{item.title}</label>
+                </div>
+            {/each}
         {/each}
     </div>
 {/if}

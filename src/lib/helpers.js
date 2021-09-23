@@ -1,7 +1,7 @@
 function isRequired (field) {
   if (field.rules) {
     if (field.rules.length > 0) {
-      return 'required' in field.rules
+      return 'required' in field.rules;
     }
   }
   return false;

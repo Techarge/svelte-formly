@@ -16,6 +16,7 @@
     import Message from './Message.svelte';
     import Header from "./Header.svelte";
     import RadioMulti from "./RadioMulti.svelte";
+    import Star from "./Star.svelte";
 
     // Declar variables;
     export let fields = [];
@@ -121,6 +122,8 @@
             <Header {field}/>
         {:else if field.type === 'sectionheader'}
             <Header {field}/>
+        {:else if field.type === 'star'}
+            <Star {field} on:changeValue={changeValueHander}/>
         {/if}
 
         <!-- Description -->

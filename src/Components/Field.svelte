@@ -17,6 +17,7 @@
     import Header from "./Header.svelte";
     import RadioMulti from "./RadioMulti.svelte";
     import Footer from "./Footer.svelte";
+    import Star from "./Star.svelte";
 
     // Declare variables;
     export let fields = [];

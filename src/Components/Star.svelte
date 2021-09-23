@@ -37,7 +37,7 @@
                 let suffix = "Star";
                 if (i > 1)
                     suffix = "Stars";
-                list[i] = {id: i+1, title: `${star_map[i+1]} ${suffix}`};
+                list[i] = {id: i + 1, title: `${star_map[i + 1]} ${suffix}`};
             }
         }
         return list;
@@ -78,7 +78,7 @@
 </script>
 
 <div>
-    <span class="grid grid-flow-col grid-cols-{stars.length} justify-around">
+    <span class="grid grid-flow-col grid-cols-{stars.length} justify-around content-center items-center gap-4">
     {#each stars as star(star.id)}
         <StarIcon
                 filled={hoverRating ? (hoverRating >= star.id) : (rating >= star.id)}

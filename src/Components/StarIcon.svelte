@@ -12,7 +12,7 @@
 		stroke: #000000;
 	}
 	.filled {
-		fill: url(#grad2);
+		fill: url(#grad2) #5AB4F2;
 	}
 </style>
 

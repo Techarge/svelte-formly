@@ -8,13 +8,14 @@
   export let field = {};
   const defaultAttributes = {
     id: '',
-    classes: '',
+    classes: 'bg-white p-4',
     disabled: false,
+        div_class:"bg-light-grey container pt-30px",
   };
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };
 
-  let classe = null;
+    let classe = null;
   let defaulClasses = null;
 
   // Dispatch.
@@ -39,7 +40,7 @@
   name={field.name}
   value={field.value}
   id={field.attributes.id}
-  class={classe}
+  class={defaultAttributes.classes}
   required={isRequired(field)}
   disabled={field.attributes.disabled}
   on:input={onChangeValue}

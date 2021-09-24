@@ -6,13 +6,14 @@
   export let field = {};
   const defaultAttributes = {
     id: '',
-    classes: '',
+    classes: 'bg-white p-4',
     disabled: null,
+    div_class:"bg-light-grey container pt-30px",
   };
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };
 
-  let classe = null;
+    let classe = null;
   let defaulClasses = null;
 
   let multiple = false;
@@ -64,7 +65,7 @@
 <input
   type="file"
   name={field.name}
-  class={classe}
+  class={defaultAttributes.classes}
   {multiple}
   on:input={onChangerValue}
   bind:this={inputFile}

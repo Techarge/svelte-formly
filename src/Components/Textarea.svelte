@@ -8,7 +8,7 @@
   export let field = {};
   const defaultAttributes = {
     id: '',
-    classes: '',
+    classes: 'bg-white p-4',
     min: null,
     max: null,
     step: null,
@@ -17,11 +17,12 @@
     required: false,
     disabled: false,
     readonly: false,
+      div_class:"bg-light-grey container pt-30px",
   };
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };
 
-  let classe = null;
+    let classe = null;
   let defaulClasses = null;
 
   // Dispatch.
@@ -44,7 +45,7 @@
 
 <textarea
   name={field.name}
-  class={classe}
+  class={defaultAttributes.classes}
   value={field.value}
   placeholder={field.attributes.placeholder}
   required={isRequired(field)}

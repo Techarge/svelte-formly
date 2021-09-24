@@ -9,7 +9,11 @@
     autocorrect: 'off',
     autocomplete: 'off',
     placeholder: 'Tap here...',
+        div_class:"bg-light-grey container pt-30px",
+        classes: 'bg-white p-4',
   };
+    let classe = null;
+  let defaulClasses = null;
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };
 

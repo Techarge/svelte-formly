@@ -8,18 +8,19 @@
     export let field = {};
     const defaultAttributes = {
         id: '',
-        classes: '',
+        classes: 'bg-black',
         disabled: false,
         readonly: false,
         description: '',
+        div_class: 'bg-white container',
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
     field.description = ''; // don't update description as the header should just take the value of the field
-    let classe = null;
-    let defaulClasses = null;
+    let classes = null;
+    let defaultClasses = null;
 
-    // Dispatch.
+    // Dispatch
     const dispatch = createEventDispatcher();
 
     // Lifecycle.
@@ -33,7 +34,7 @@
         readonly={field.attributes.readonly}
         name={field.name}
         id={field.attributes.id}
-        class={clsx(field.attributes.classes)}
+        class={field.attributes.classes}
 >
     {#if field.value}
         {field.value}

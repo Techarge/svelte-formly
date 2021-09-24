@@ -6,7 +6,8 @@
   export let field = {};
   let values = [];
   const defaultAttributes = {
-    classes: '',
+    classes: 'bg-white p-4',
+        div_class:"bg-light-grey container pt-30px",
   };
   let classe = null;
   let defaulClasses = null;
@@ -64,7 +65,7 @@
   >
     <input
       type="checkbox"
-      class={classe}
+      class={defaultAttributes.classes}
       value={item.value}
       name={item.name}
       checked={item.checked ? item.checked : false}

@@ -28,6 +28,6 @@
   }
 </script>
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-red-600">
   {#if error}{displayError(error)}{/if}
 </div>

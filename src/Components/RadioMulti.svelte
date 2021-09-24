@@ -3,13 +3,14 @@
     import clsx from 'clsx';
     import {isRequired} from "../lib/helpers";
 
-    // Declar variables.
+    // Declare variables.
     export let field = {};
     const defaultAttributes = {
-        classes: '',
+        classes: 'bg-white p-4',
+            div_class:"bg-light-grey container pt-30px",
     };
-    let classe = null;
-    let defaulClasses = null;
+      let classe = null;
+  let defaulClasses = null;
     export let items = getItems(field);
 
 
@@ -76,7 +77,7 @@
 {#if topics.length == 0}
     Missing topics in this question!
 {:else}
-    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-items-center">
+    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-items-center bg-white">
         {#if field.error}
             <div class="grid grid-flow-row grid-cols-1">
                 <div class="italic text-red-400">{field.error}</div>
@@ -102,7 +103,7 @@
                 >
                     <input
                             type="radio"
-                            class="{classe} ml-0 "
+                            class="{defaultAttributes.classes} ml-0 "
                             id={topic.id}-{item.id}
                             name={topic.id}
                             value={item.value}

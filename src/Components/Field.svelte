@@ -18,6 +18,7 @@
     import RadioMulti from "./RadioMulti.svelte";
     import Footer from "./Footer.svelte";
     import Star from "./Star.svelte";
+        import SectionHeader from "./SectionHeader.svelte";
 
     // Declare variables;
     export let fields = [];
@@ -85,23 +86,14 @@
 {#each listFields as field (field.name)}
     <Tag
             tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.prefix
-      ? field.prefix.classes
-        ? field.prefix.classes
-        : 'form-group'
-      : 'svelte-' + field.type}
+            classes={field.attributes.div_class ? field.attributes.div_class : field.type === 'hidden' ? "hidden" : "bg-light-grey container pt-30px"  }
     >
         <!-- Label -->
         {#if field.attributes}
             {#if field.attributes.label}
-                {#if field.type === "footer"}
-                    <label for={field.id} class="footer-text">{field.attributes.label}</label>
-                    {:else}
-                <label for={field.id} class="label">{field.attributes.label}</label>
-                    {/if}
+                    <label for={field.id} class={field.attributes.label_class ? field.attributes.label_class : "label"}>{field.attributes.label}</label>
             {/if}
         {/if}
-
         <!-- Field -->
         {#if field.type === 'input'}
             <Input {field} on:changeValue={changeValueHander}/>
@@ -126,7 +118,7 @@
         {:else if field.type === 'header'}
             <Header {field}/>
         {:else if field.type === 'sectionheader'}
-            <Header {field}/>
+            <SectionHeader {field}/>
         {:else if field.type === 'star'}
             <Star {field} on:changeValue={changeValueHander}/>
         {:else if field.type === 'footer'}

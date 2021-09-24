@@ -9,7 +9,7 @@
     const defaultAttributes = {
         type: 'text',
         id: '',
-        classes: '',
+        classes: 'bg-white',
         min: null,
         max: null,
         step: null,
@@ -17,6 +17,7 @@
         placeholder: '',
         disabled: false,
         readonly: false,
+         div_class:"bg-light-grey container pt-30px",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -48,7 +49,7 @@
             name={field.name}
             value={field.value}
             id={field.attributes.id}
-            class={clsx(field.attributes.classes)}
+            class={defaultAttributes.classes}
             placeholder={field.attributes.placeholder}
             required={isRequired(field)}
             disabled={field.attributes.disabled}
@@ -72,7 +73,7 @@
             name={field.name}
             value={field.value}
             id={field.attributes.id}
-            class={clsx(field.attributes.classes)}
+            class={defaultAttributes.classes}
             placeholder={field.attributes.placeholder}
             required={isRequired(field)}
             disabled={field.attributes.disabled}

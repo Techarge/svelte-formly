@@ -12,6 +12,7 @@
         disabled: false,
         readonly: false,
         description: '',
+        div_class:"bg-black text-white text-center"
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};

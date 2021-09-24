@@ -6,10 +6,11 @@
     // Declar variables.
     export let field = {};
     const defaultAttributes = {
-        classes: '',
+        classes: 'bg-white p-4',
+            div_class:"bg-light-grey container pt-30px",
     };
-    let classe = null;
-    let defaulClasses = null;
+      let classe = null;
+  let defaulClasses = null;
     export let items = getItems(field);
 
     function getItems(field) {
@@ -67,7 +68,7 @@
                 >
                     <input
                             type="radio"
-                            class="{classe} ml-0 "
+                            class="{defaultAttributes.classes} ml-0 "
                             id={item.id}
                             name={field.name}
                             value={item.value}
@@ -89,7 +90,7 @@
         >
             <input
                     type="radio"
-                    class={classe}
+                    class={defaultAttributes.classes}
                     id={item.id}
                     name={field.name}
                     value={item.value}

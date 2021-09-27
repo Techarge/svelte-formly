@@ -130,7 +130,7 @@
   background: #C4C4C480;
   border-radius: 20px;
   background-image: linear-gradient(#5AB4F280, #00FFE080);
-  background-size: 70% 100%;
+  background-size: 50% 100%;
   background-repeat: no-repeat;
 }
 

@@ -17,7 +17,7 @@
         placeholder: '',
         disabled: false,
         readonly: false,
-        div_class: "bg-light-grey container pt-30px",
+        div_class: "bg-light-grey container py-10px",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -79,7 +79,7 @@
                 list="tickmarks"
                 on:input={onChangerValue}
         bind:this={rangeslider}/>
-        <datalist id="tickmarks" class="text-black-500">
+        <datalist id="tickmarks" class="text-black">
             {#each Array(parseInt(field.attributes.max) - parseInt(field.attributes.min) + parseInt(field.attributes.step)) as _, i}
                 <option value="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"
                         label="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"></option>
@@ -110,21 +110,19 @@
     datalist {
         display: flex;
         justify-content: space-between;
-        color: grey;
         width: 100%;
     }
-    :global(input[type=range]:hover) {
+    :global(.feedback-form input[type=range]:hover) {
           background-image: linear-gradient(#5AB4F280, #00FFE080)!important;
         -webkit-appearance: none;
     }
 
-    :global(input[type=range]:focus) {
+    :global(.feedback-form input[type=range]:focus) {
         -webkit-appearance: none;
         background-color: #C4C4C480!important;
     }
     input[type="range"] {
   -webkit-appearance: none;
-  margin-right: 15px;
   width: 100%;
   height: 25px;
   background: #C4C4C480;

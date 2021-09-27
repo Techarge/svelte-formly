@@ -86,7 +86,7 @@
 {#each listFields as field (field.name)}
     <Tag
             tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.attributes.div_class ? field.attributes.div_class : field.type === 'hidden' ? "hidden" : "bg-light-grey container pt-30px"  }
+            classes={field.attributes.div_class ? field.attributes.div_class : field.type === 'hidden' ? "hidden" : "bg-light-grey container py-10px"  }
     >
         <!-- Label -->
         {#if field.attributes}
@@ -147,3 +147,8 @@
         {/if}
     </Tag>
 {/each}
+<style>
+    :global(.py-10px) {
+    padding: 15px 30px;
+    }
+</style>

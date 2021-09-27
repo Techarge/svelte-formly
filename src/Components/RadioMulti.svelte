@@ -7,7 +7,7 @@
     export let field = {};
     const defaultAttributes = {
         classes: 'bg-white p-4',
-            div_class:"bg-light-grey container pt-30px",
+            div_class:"bg-light-grey container pt-10px",
     };
       let classe = null;
   let defaulClasses = null;

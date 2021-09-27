@@ -77,7 +77,7 @@
     });
 </script>
 
-<div>
+<div class="bg-white px-4 py-12">
     <span class="grid grid-flow-col grid-cols-{stars.length} justify-around content-center items-center gap-4">
     {#each stars as star(star.id)}
         <StarIcon

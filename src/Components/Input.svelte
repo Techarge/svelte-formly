@@ -67,7 +67,7 @@
                 name={field.name}
                 value={field.value}
                 id={field.attributes.id}
-                class={"none"}
+                class={"slider"}
                 placeholder={field.attributes.placeholder}
                 required={isRequired(field)}
                 disabled={field.attributes.disabled}

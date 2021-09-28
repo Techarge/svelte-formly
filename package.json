@@ -4,7 +4,7 @@
   "main": "dist/svelteformly.js",
   "module": "dist/svelteformly.es.js",
   "jsnext:main": "dist/svelteformly.es.js",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "author": "Kamal Sahmoud <maroc.develop@gmail.com>",
   "contributors": [
     "Kamal Sahmoud <maroc.develop@gmail.com>"
@@ -17,7 +17,6 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "preinstall": "[ -z \"$NPM_TOKEN\" ] && echo 'local' || echo \"//registry.npmjs.org/:_authToken=${NPM_TOKEN}\" > .npmrc",
     "build": "rollup -c",
     "dev": "WATCH=true rollup -cw",
     "prepublishOnly": "npm run build",

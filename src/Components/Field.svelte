@@ -36,7 +36,10 @@
         };
         let mylist = await Promise.all(
             listFields.map(async (field) => {
-                if (field.name == event.detail.name) {
+                if (event.detail.value){
+                    field.touched = true
+                }
+                if (field.name === event.detail.name) {
                     field.value = event.detail.value;
                 }
                 if (field.preprocess) {
@@ -139,7 +142,7 @@
 
         <!-- Error messages -->
         {#if !isValidForm}
-            {#if field.validation.errors.length > 0}
+            {#if field.validators.touched && field.validation.errors.length > 0}
                 {#each field.validation.errors as error}
                     <Message {error} messages={field.messages ? field.messages : []}/>
                 {/each}

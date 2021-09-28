@@ -58,14 +58,16 @@
 </script>
 
 {#if field.horizontal_layout }
-    <div>
-        <div class="grid grid-flow-col auto-cols-max justify-around">
+    <div class="bg-white p-4">
+        <div class="grid grid-flow-col auto-cols-max justify-around text-black">
             {#each items as item, i}
                 <div
                         class="{field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
+                    <label class="radio radio-before">
+                         <span class="radio__input">
                     <input
                             type="radio"
                             class="{defaultAttributes.classes} ml-0 "
@@ -75,20 +77,25 @@
                             required={isRequired(field)}
                             checked={item.value === field.value}
                             on:input={onChangeValue}
-                    />
-                    <label for={item.id} class="ml-0 mr-5">{item.title}</label>
+                    /><span class="radio__control"></span>
+                         </span>
+                    <label for={item.id}>{item.title}</label>
+                    </label>
                 </div>
             {/each}
         </div>
     </div>
 {:else}
     {#each items as item, i}
+        <div class="bg-white p-4 text-black">
         <div
                 class={field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}
         >
-            <input
+            <label class="radio radio-before">
+                         <span class="radio__input">
+                                <input
                     type="radio"
                     class={defaultAttributes.classes}
                     id={item.id}
@@ -96,8 +103,61 @@
                     value={item.value}
                     checked={item.value === field.value}
                     on:input={onChangeValue}
-            />
-            <label for={item.id}>{item.title}</label>
-        </div>
+            /><span class="radio__control"></span>
+                         </span>
+                    <label for={item.id}>{item.title}</label>
+                    </label>
+        </div></div>
     {/each}
 {/if}
+<style>
+   .radio {
+	 display: grid;
+	 grid-template-columns: min-content auto;
+	 grid-gap: 0.5em;
+	 font-size: 2.25rem;
+	 color: black;
+}
+ .radio:focus-within .radio__label {
+	 transform: scale(1.05);
+	 opacity: 1;
+}
+ .radio__label {
+	 line-height: 1;
+	 transition: 180ms all ease-in-out;
+	 opacity: 0.8;
+}
+ .radio__input {
+	 display: flex;
+}
+ .radio__input input {
+	 opacity: 0;
+	 width: 0;
+	 height: 0;
+}
+ .radio-before .radio__control {
+	 display: grid;
+	 place-items: center;
+}
+ .radio-before input + .radio__control::before {
+	 content: "";
+	 width: 0.5em;
+	 height: 0.5em;
+	 box-shadow: inset 0.5em 0.5em currentColor;
+	 border-radius: 50%;
+	 transition: 180ms transform ease-in-out;
+	 transform: scale(0);
+}
+ .radio-before input:checked + .radio__control::before {
+	 transform: scale(1);
+}
+ .radio__control {
+	 display: block;
+	 width: 1em;
+	 height: 1em;
+	 border-radius: 50%;
+	 border: 0.1em solid currentColor;
+	 transform: translateY(-0.05em);
+}
+
+</style>

@@ -7,7 +7,7 @@
     export let field = {};
     const defaultAttributes = {
         classes: 'bg-white p-4',
-            div_class:"bg-light-grey container pt-10px",
+            div_class:"bg-light-grey container py-10px",
     };
       let classe = null;
   let defaulClasses = null;
@@ -77,7 +77,7 @@
 {#if topics.length == 0}
     Missing topics in this question!
 {:else}
-    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-items-center bg-white">
+    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-items-center bg-white text-black items-end py-4">
         {#if field.error}
             <div class="grid grid-flow-row grid-cols-1">
                 <div class="italic text-red-400">{field.error}</div>
@@ -101,6 +101,8 @@
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
+                    <label class="radio radio-before">
+                         <span class="radio__input">
                     <input
                             type="radio"
                             class="{defaultAttributes.classes} ml-0 "
@@ -110,11 +112,64 @@
                             required={isRequired(field)}
                             checked={topic.value === field.value}
                             on:input={onChangeValue}
-                    />
-                    <label for={topic.id}-{item.id} class="ml-0 mr-5">{item.title}</label>
+                    /><span class="radio__control"></span>
+                         </span>
+                    <label for={topic.id}-{item.id} class="hidden">{item.title}</label>
+                    </label>
                 </div>
             {/each}
         {/each}
     </div>
 {/if}
+<style>
+   .radio {
+	 display: grid;
+	 grid-template-columns: min-content auto;
+	 grid-gap: 0.5em;
+	 font-size: 2.25rem;
+	 color: black;
+}
+ .radio:focus-within .radio__label {
+	 transform: scale(1.05);
+	 opacity: 1;
+}
+ .radio__label {
+	 line-height: 1;
+	 transition: 180ms all ease-in-out;
+	 opacity: 0.8;
+}
+ .radio__input {
+	 display: flex;
+}
+ .radio__input input {
+	 opacity: 0;
+	 width: 0;
+	 height: 0;
+}
+ .radio-before .radio__control {
+	 display: grid;
+	 place-items: center;
+}
+ .radio-before input + .radio__control::before {
+	 content: "";
+	 width: 0.5em;
+	 height: 0.5em;
+	 box-shadow: inset 0.5em 0.5em currentColor;
+	 border-radius: 50%;
+	 transition: 180ms transform ease-in-out;
+	 transform: scale(0);
+}
+ .radio-before input:checked + .radio__control::before {
+	 transform: scale(1);
+}
+ .radio__control {
+	 display: block;
+	 width: 1em;
+	 height: 1em;
+	 border-radius: 50%;
+	 border: 0.1em solid currentColor;
+	 transform: translateY(-0.05em);
+}
+
+</style>
 

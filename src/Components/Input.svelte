@@ -72,7 +72,6 @@
                         label="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"></option>
             {/each}
         </datalist>
-            <p>{field.value}</p>
     </div>
     </div>
 {:else}

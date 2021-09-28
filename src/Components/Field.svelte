@@ -142,7 +142,7 @@
 
         <!-- Error messages -->
         {#if !isValidForm}
-            {#if field.validators.touched && field.validation.errors.length > 0}
+            {#if field.validation.touched && field.validation.errors.length > 0}
                 {#each field.validation.errors as error}
                     <Message {error} messages={field.messages ? field.messages : []}/>
                 {/each}

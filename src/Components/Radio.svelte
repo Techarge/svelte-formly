@@ -8,6 +8,7 @@
     const defaultAttributes = {
         classes: 'bg-white p-4',
             div_class:"bg-light-grey container py-10px",
+         background_class: "bg-white",
     };
       let classe = null;
   let defaulClasses = null;
@@ -58,8 +59,8 @@
 </script>
 
 {#if field.horizontal_layout }
-    <div class="bg-white p-4">
-        <div class="grid grid-flow-col auto-cols-max justify-around text-black">
+    <div class="{field.attributes.background_class}">
+        <div class="grid md:grid-flow-col auto-cols-max justify-around text-black py-10px gap-2 md:gap-0">
             {#each items as item, i}
                 <div
                         class="{field.extra.aligne === 'inline'
@@ -86,8 +87,8 @@
         </div>
     </div>
 {:else}
+    <div class="{field.attributes.background_class} grid grid-cols-1 gap-2 py-10px">
     {#each items as item, i}
-        <div class="bg-white p-4 text-black">
         <div
                 class={field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
@@ -107,8 +108,9 @@
                          </span>
                     <label for={item.id}>{item.title}</label>
                     </label>
-        </div></div>
+        </div>
     {/each}
+    </div>
 {/if}
 <style>
    .radio {

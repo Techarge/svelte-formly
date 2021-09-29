@@ -38,7 +38,6 @@
           ...values,
           {
             name: i.name,
-            value: i.value,
             checked: i.checked ? i.checked : false,
           },
         ];
@@ -48,17 +47,11 @@
 
   // Lifecycle.
   afterUpdate(() => {
-    field.value = field.value == undefined ? null : field.value;
     classe = clsx(field.attributes.classes, defaulClasses);
     field.attributes = { ...defaultAttributes, ...field.attributes };
   });
 </script>
 
-<pre>
-  <code>
-    {JSON.stringify(field.extra.items, null, 2)}
-  </code>
-</pre>
 {#each field.extra.items as item, i}
   <div
     class={field.extra.aligne === 'inline' ? 'form-check-inline' : 'form-check'}
@@ -66,11 +59,11 @@
     <input
       type="checkbox"
       class={defaultAttributes.classes}
-      value={item.value}
+      value={item.checked ? item.checked : false}
       name={item.name}
       checked={item.checked ? item.checked : false}
       on:input={onChangeValue}
     />
-    <span>{item.title}</span>
+    <span>{item.name}</span>
   </div>
 {/each}

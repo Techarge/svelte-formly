@@ -18,7 +18,8 @@
     import RadioMulti from "./RadioMulti.svelte";
     import Footer from "./Footer.svelte";
     import Star from "./Star.svelte";
-        import SectionHeader from "./SectionHeader.svelte";
+    import SectionHeader from "./SectionHeader.svelte";
+    import Hidden from "./Hidden.svelte";
 
     // Declare variables;
     export let fields = [];
@@ -36,7 +37,7 @@
         };
         let mylist = await Promise.all(
             listFields.map(async (field) => {
-                if (event.detail.value){
+                if (event.detail.value) {
                     field.touched = true
                 }
                 if (field.name === event.detail.name) {
@@ -87,9 +88,13 @@
 </script>
 
 {#each listFields as field (field.name)}
+            {#if field.attributes.type === 'hidden'}
+            <Hidden {field}/>
+                {:else }
+
     <Tag
             tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.attributes.div_class ? field.attributes.div_class : field.type === 'hidden' ? "hidden" : "bg-light-grey container py-10px"  }
+            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey container py-10px"  }
     >
         <!-- Label -->
         {#if field.attributes}
@@ -98,6 +103,7 @@
             {/if}
         {/if}
         <!-- Field -->
+
         {#if field.type === 'input'}
             <Input {field} on:changeValue={changeValueHander}/>
         {:else if field.type === 'textarea'}
@@ -149,6 +155,7 @@
             {/if}
         {/if}
     </Tag>
+                {/if}
 {/each}
 <style>
     :global(.py-10px) {

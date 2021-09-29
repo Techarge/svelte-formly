@@ -18,6 +18,7 @@
         disabled: false,
         readonly: false,
         div_class: "bg-light-grey container py-10px",
+        background_class: "bg-white",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -46,7 +47,7 @@
 
 
 {#if field.attributes.type == "range"}
-    <div class="bg-white">
+    <div class="{field.attributes.background_class}">
         <div class="rangeslider p-4">
         <input
                 type={field.attributes.type}
@@ -74,7 +75,7 @@
         </datalist>
     </div>
     </div>
-{:else}
+{:else if field.attributes.type !== "hidden"}
     <input
             type={field.attributes.type}
             name={field.name}
@@ -119,14 +120,6 @@
         background-image: linear-gradient(#5AB4F280, #00FFE080);
         background-repeat: no-repeat;
     }
-  -webkit-appearance: none;
-  width: 100%;
-  height: 25px;
-  background: #C4C4C480;
-  border-radius: 20px;
-  background-image: linear-gradient(#5AB4F280, #00FFE080);
-  background-repeat: no-repeat;
-}
 
     /* Input Thumb */
     input[type="range"]::-webkit-slider-thumb {

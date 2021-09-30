@@ -160,7 +160,7 @@
         border-radius: 50%;
         background: #000000;
         cursor: ew-resize;
-        box-shadow: 0 0 2px 0 #555;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         transition: background .3s ease-in-out;
     }
 
@@ -171,7 +171,7 @@
         border-radius: 50%;
         background: #000000;
         cursor: ew-resize;
-        box-shadow: 0 0 2px 0 #555;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         transition: background .3s ease-in-out;
     }
 
@@ -182,7 +182,7 @@
         border-radius: 50%;
         background: #000000;
         cursor: ew-resize;
-        box-shadow: 0 0 2px 0 #555;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         transition: background .3s ease-in-out;
     }
 

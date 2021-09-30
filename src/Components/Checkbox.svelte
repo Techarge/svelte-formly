@@ -6,7 +6,7 @@
   export let field = {};
   let values = [];
   const defaultAttributes = {
-    classes: 'bg-white p-4',
+    class: 'bg-white p-4',
         div_class:"bg-light-grey container py-10px",
   };
   let classe = null;
@@ -54,7 +54,7 @@
 
 {#each field.extra.items as item, i}
   <div
-    class={field.extra.aligne === 'inline' ? 'form-check-inline' : 'form-check'}
+    class={field.extra.aligne === 'inline' ? 'form-check-inline ' + field.attributes.class : 'form-check ' + field.attributes.class}
   >
     <input
       type="checkbox"

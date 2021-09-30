@@ -9,7 +9,7 @@
     const defaultAttributes = {
         type: 'text',
         id: '',
-        classes: 'bg-white',
+        classes: 'bg-white py-10px px-2',
         min: null,
         max: null,
         step: null,
@@ -69,7 +69,7 @@
                 style="background-size: {(parseInt(field.value) - parseInt(field.attributes.min)) * 100 / (parseInt(field.attributes.max) - parseInt(field.attributes.min)) + '% 100%'}  "/>
         <datalist id="tickmarks" class="text-black">
             {#each Array(parseInt(field.attributes.max) - parseInt(field.attributes.min) + parseInt(field.attributes.step)) as _, i}
-                <option value="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"
+                <option class="option{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}" value="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"
                         label="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"></option>
             {/each}
         </datalist>

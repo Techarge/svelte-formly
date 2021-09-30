@@ -13,7 +13,7 @@
         readonly: false,
         description: '',
         div_class: 'bg-darkgrey container',
-        label_class: 'font-semibold',
+        label_class: 'font-semibold py-12px text-black',
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};

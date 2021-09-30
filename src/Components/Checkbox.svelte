@@ -6,7 +6,7 @@
   export let field = {};
   let values = [];
   const defaultAttributes = {
-    class: 'bg-white p-4',
+    class: 'bg-white p-4 customised-checkbox',
         div_class:"bg-light-grey container py-10px",
   };
   let classe = null;
@@ -51,11 +51,13 @@
     field.attributes = { ...defaultAttributes, ...field.attributes };
   });
 </script>
-
+<div class="{field.attributes.class}">
 {#each field.extra.items as item, i}
   <div
-    class={field.extra.aligne === 'inline' ? 'form-check-inline ' + field.attributes.class : 'form-check ' + field.attributes.class}
+    class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check p-4 '}
   >
+     <label class="checkbox">
+  <span class="checkbox__input">
     <input
       type="checkbox"
       class={defaultAttributes.classes}
@@ -64,6 +66,51 @@
       checked={item.checked ? item.checked : false}
       on:input={onChangeValue}
     />
-    <span>{item.name}</span>
+     <span class="checkbox__control">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+    </span>
+  </span>
+    <label>{item.name}</label>
+       </label>
   </div>
 {/each}
+  </div>
+<style>
+
+  .customised-checkbox .checkbox {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-gap: 0.5em;
+    font-size: 2rem;
+    color: black;
+  }
+  .customised-checkbox .checkbox__control {
+    display: inline-grid;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #4a5568;
+  }
+  .customised-checkbox .checkbox__control svg {
+    transition: transform 0.1s ease-in 25ms;
+    transform: scale(0);
+    transform-origin: bottom left;
+    color: black;
+  }
+  .customised-checkbox .checkbox__input {
+    display: grid;
+    grid-template-areas: "checkbox";
+  }
+  .customised-checkbox .checkbox__input > * {
+    grid-area: checkbox;
+  }
+  .customised-checkbox .checkbox__input input {
+    opacity: 0;
+    width: 1em;
+    height: 1em;
+  }
+  .customised-checkbox .checkbox__input input:checked + .checkbox__control svg {
+    transform: scale(1);
+  }
+
+</style>

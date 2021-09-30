@@ -12,7 +12,7 @@
         disabled: false,
         readonly: false,
         description: '',
-        div_class: 'bg-white container',
+        div_class: 'bg-white container py-10px text-24px text-black',
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};

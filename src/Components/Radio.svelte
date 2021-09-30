@@ -60,7 +60,7 @@
 
 {#if field.horizontal_layout }
     <div class="{field.attributes.background_class}">
-        <div class="grid md:grid-flow-col auto-cols-max justify-around text-black py-10px gap-2 md:gap-0">
+        <div class="grid md:grid-flow-col auto-cols-max justify-around text-black p-4 gap-2 md:gap-0">
             {#each items as item, i}
                 <div
                         class="{field.extra.aligne === 'inline'

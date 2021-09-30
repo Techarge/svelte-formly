@@ -94,7 +94,7 @@
 
     <Tag
             tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey container py-10px"  }
+            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey md:container md:py-15px md:py-30px "   }
     >
         <!-- Label -->
         {#if field.attributes}
@@ -158,7 +158,11 @@
                 {/if}
 {/each}
 <style>
+    /*Fixes as tailwind isn't working*/
     :global(.py-10px) {
     padding: 15px 30px;
     }
+       /* :global(.py-12px) {
+    padding: 12px 0px;
+    }*/
 </style>

@@ -75,6 +75,37 @@
         </datalist>
     </div>
     </div>
+    {:else if field.attributes.type === 'checkbox'}
+     <div class="{defaultAttributes.classes}">
+      <div
+    class="customised-checkbox">
+     <label class="checkbox">
+  <span class="checkbox__input">
+   <input
+            type={field.attributes.type}
+            name={field.name}
+            value={field.value}
+            id={field.attributes.id}
+            class={defaultAttributes.classes}
+            placeholder={field.attributes.placeholder}
+            required={isRequired(field)}
+            disabled={field.attributes.disabled}
+            readonly={field.attributes.readonly}
+            min={field.attributes.min}
+            max={field.attributes.max}
+            step={field.attributes.step}
+            autocomplete={field.attributes.autocomplete}
+            on:input={onChangerValue}
+    />
+     <span class="checkbox__control">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+    </span>
+  </span>
+    <label class="p-none">{field.name}</label>
+       </label>
+  </div>
+     </div>
 {:else if field.attributes.type !== "hidden"}
     <input
             type={field.attributes.type}
@@ -188,5 +219,44 @@
         border: none;
         background: transparent;
     }
+    /*Styling single checkbox */
+.customised-checkbox .checkbox {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-gap: 0.5em;
+    font-size: 2rem;
+    color: black;
+    padding-bottom: 0;
+  }
+  .customised-checkbox .checkbox__control {
+    display: inline-grid;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #4a5568;
+  }
+  .customised-checkbox .checkbox__control svg {
+    transition: transform 0.1s ease-in 25ms;
+    transform: scale(0);
+    transform-origin: bottom left;
+    color: black;
+  }
+  .customised-checkbox .checkbox__input {
+    display: grid;
+    grid-template-areas: "checkbox";
+  }
+  .p-none {
+      padding-bottom: 0px!important;
+  }
+  .customised-checkbox .checkbox__input > * {
+    grid-area: checkbox;
+  }
+  .customised-checkbox .checkbox__input input {
+    opacity: 0;
+    width: 1em;
+    height: 1em;
+  }
+  .customised-checkbox .checkbox__input input:checked + .checkbox__control svg {
+    transform: scale(1);
+  }
 
 </style>

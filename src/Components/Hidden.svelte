@@ -45,7 +45,6 @@
 </script>
 
 {#if field.attributes.type == "hidden"}
-    <div class="hi-zoe"></div>
     <input
             type={field.attributes.type}
             name={field.name}

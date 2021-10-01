@@ -94,7 +94,7 @@
 
     <Tag
             tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey md:container md:py-15px md:py-30px "   }
+            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey md:container md:py-4 md:px-8 "   }
     >
         <!-- Label -->
         {#if field.attributes}

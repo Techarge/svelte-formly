@@ -17,7 +17,7 @@
         placeholder: '',
         disabled: false,
         readonly: false,
-        div_class: "bg-light-grey container py-10px",
+        div_class: "bg-light-grey md:container md:py-4 md:px-8",
         background_class: "bg-white",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};

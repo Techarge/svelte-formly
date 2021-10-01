@@ -9,7 +9,7 @@
     autocorrect: 'off',
     autocomplete: 'off',
     placeholder: 'Tap here...',
-        div_class:"bg-light-grey container py-10px",
+        div_class:"bg-light-grey md:container md:py-4 md:px-8",
         classes: 'bg-white p-4',
   };
     let classe = null;

@@ -8,7 +8,7 @@
     id: '',
     classes: 'bg-white p-4',
     disabled: null,
-    div_class:"bg-light-grey container py-10px",
+    div_class:"bg-light-grey md:container md:py-4 md:px-8",
   };
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };

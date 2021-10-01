@@ -7,7 +7,7 @@
   let values = [];
   const defaultAttributes = {
     class: 'bg-white p-4 customised-checkbox',
-        div_class:"bg-light-grey container py-10px",
+        div_class:"bg-light-grey md:container md:py-4 md:px-8",
   };
   let classe = null;
   let defaulClasses = null;
@@ -54,7 +54,7 @@
 <div class="{field.attributes.class}">
 {#each field.extra.items as item, i}
   <div
-    class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check p-4 '}
+    class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
   >
      <label class="checkbox">
   <span class="checkbox__input">

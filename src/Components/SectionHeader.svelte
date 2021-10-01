@@ -12,7 +12,7 @@
         disabled: false,
         readonly: false,
         description: '',
-        div_class: 'bg-darkgrey container py-10px',
+        div_class: 'bg-darkgrey md:container md:py-4 md:px-8',
         label_class: 'font-semibold py-12px text-black',
     };
     const fieldAttributes = field.attributes ? field.attributes : {};

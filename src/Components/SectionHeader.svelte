@@ -12,8 +12,8 @@
         disabled: false,
         readonly: false,
         description: '',
-        div_class: 'bg-darkgrey md:container md:py-4 md:px-8',
-        label_class: 'font-semibold py-12px text-black',
+        div_class: 'bg-darkgrey m-auto md:py-4 md:px-8',
+        label_class: 'font-semibold text-black text-24px py-0',
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -37,7 +37,7 @@
         id={field.attributes.id}
         class={clsx(field.attributes.classes)}
 >
-    {#if field.value}
+    <p>{#if field.value}
         {field.value}
-    {/if}
+    {/if}</p>
 </div>

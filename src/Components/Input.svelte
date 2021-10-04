@@ -17,7 +17,7 @@
         placeholder: '',
         disabled: false,
         readonly: false,
-        div_class: "bg-light-grey md:container md:py-4 md:px-8",
+        div_class: "bg-light-grey m-auto md:py-4 md:px-8",
         background_class: "bg-white",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
@@ -28,13 +28,25 @@
 
     // Dispatch.
     const dispatch = createEventDispatcher();
-
+    let offset;
     // Change value field.
     function onChangerValue(event) {
         dispatch('changeValue', {
             name: field.name,
             value: scanValue(field.attributes.type, event.target.value),
         });
+  if ((field.value - field.attributes.min) * 100 / (field.attributes.max - field.attributes.min) == 100) {
+     offset = 0 + "px";
+ } else {
+    offset = -4 + "px";
+  }
+  var slider = document.getElementById("6f5308c4-2e4e-4901-9412-36d694a9adde");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
     }
 
     // Lifecycle.
@@ -47,7 +59,7 @@
 
 
 {#if field.attributes.type == "range"}
-    <div class="{field.attributes.background_class}">
+    <div class="{field.attributes.background_class}" style="--offset: {offset}">
         <div class="rangeslider p-4">
         <input
                 type={field.attributes.type}
@@ -73,6 +85,7 @@
                         label="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"></option>
             {/each}
         </datalist>
+            <p>Value: <span id="demo"></span></p>
     </div>
     </div>
     {:else if field.attributes.type === 'checkbox'}
@@ -158,7 +171,7 @@
         height: 30px;
         width: 30px;
         border-radius: 50%;
-        background: #000000;
+        background: black;
         cursor: ew-resize;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         transition: background .3s ease-in-out;

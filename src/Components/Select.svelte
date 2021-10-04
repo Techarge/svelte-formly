@@ -10,7 +10,7 @@
     id: '',
     classes: 'bg-white py-10px',
     disabled: false,
-        div_class:"bg-light-grey md:container md:py-4 md:px-8",
+        div_class:"bg-light-grey m-auto md:py-4 md:px-8",
   };
   const fieldAttributes = field.attributes ? field.attributes : {};
   field.attributes = { ...defaultAttributes, ...fieldAttributes };

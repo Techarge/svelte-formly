@@ -6,8 +6,8 @@
   export let field = {};
   let values = [];
   const defaultAttributes = {
-    class: 'bg-white p-4 customised-checkbox',
-        div_class:"bg-light-grey md:container md:py-4 md:px-8",
+    class: 'bg-white py-10px customised-checkbox',
+        div_class:"bg-light-grey m-auto md:py-4 md:px-8",
   };
   let classe = null;
   let defaulClasses = null;

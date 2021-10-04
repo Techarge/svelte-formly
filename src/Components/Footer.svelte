@@ -12,7 +12,7 @@
         disabled: false,
         readonly: false,
         description: '',
-        div_class:"bg-black text-white text-center",
+        div_class:"bg-black text-white text-center m-auto md:py-4 md:px-8",
         img_src: "../sayso/static/img/logo-with-gradient.png",
     };
     const fieldAttributes = field.attributes ? field.attributes : {};

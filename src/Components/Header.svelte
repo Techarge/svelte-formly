@@ -12,7 +12,8 @@
         disabled: false,
         readonly: false,
         description: '',
-        div_class: 'bg-white md:container md:py-4 md:px-8 text-24px text-black',
+        div_class: 'bg-white m-auto md:py-4 md:px-8 text-black',
+        label_class: "text-24px"
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -40,3 +41,6 @@
         {field.value}
     {/if}
 </div>
+<style>
+
+</style>

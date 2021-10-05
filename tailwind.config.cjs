@@ -4,10 +4,16 @@ const config = {
         content: ["./src/**/*.{html,js,svelte,ts}",],
         options: {
             safelist:
-                 [...Array(12).keys()].map((_,i)=>`grid-rows-${i+1}`).concat(
-                  [...Array(12).keys()].map((_,i)=>`grid-cols-${i+1}`)
-                 ),
-            ,
+                [...Array(12).keys()].map((_, i) => `grid-rows-${i + 1}`).concat(
+                    [...Array(12).keys()].map((_, i) => `grid-cols-${i + 1}`).contat(
+                        ["bg-dark-grey",
+                            "py-15px",
+                            "py-30px",
+                            "12px",
+                            "15px",
+                        ]
+                    )
+                ),
         },
     },
     theme: {

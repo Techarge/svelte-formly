@@ -1,3 +1,4 @@
+import "./app.css";
 import Component from "./Component.svelte";
 
 const target = document.createElement("div");

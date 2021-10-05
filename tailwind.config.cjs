@@ -2,9 +2,13 @@ const config = {
     mode: "jit",
     purge: {
         content: ["./src/**/*.{html,js,svelte,ts}",],
-        safelist: [
-            "bg-emsx-blue",
-        ],
+        options: {
+            safelist:
+                 [...Array(12).keys()].map((_,i)=>`grid-rows-${i+1}`).concat(
+                  [...Array(12).keys()].map((_,i)=>`grid-cols-${i+1}`)
+                 ),
+            ,
+        },
     },
     theme: {
         extend: {

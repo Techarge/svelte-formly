@@ -19,6 +19,7 @@
         readonly: false,
         div_class: "bg-light-grey m-auto md:py-4 md:px-8",
         background_class: "bg-white",
+        range_output: "flex m-auto"
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};
@@ -28,25 +29,16 @@
 
     // Dispatch.
     const dispatch = createEventDispatcher();
-    let offset;
+    let output;
+    let positioning
     // Change value field.
     function onChangerValue(event) {
         dispatch('changeValue', {
             name: field.name,
             value: scanValue(field.attributes.type, event.target.value),
         });
-  if ((field.value - field.attributes.min) * 100 / (field.attributes.max - field.attributes.min) == 100) {
-     offset = 0 + "px";
- } else {
-    offset = -4 + "px";
-  }
-  var slider = document.getElementById("6f5308c4-2e4e-4901-9412-36d694a9adde");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
+  output =  field.value;
     }
 
     // Lifecycle.
@@ -59,8 +51,8 @@ slider.oninput = function() {
 
 
 {#if field.attributes.type == "range"}
-    <div class="{field.attributes.background_class}" style="--offset: {offset}">
-        <div class="rangeslider p-4">
+    <div class="{field.attributes.background_class} flex" style="">
+        <div class="rangeslider p-4 w-10/12 md:w-9/12 block">
         <input
                 type={field.attributes.type}
                 name={field.name}
@@ -80,13 +72,29 @@ slider.oninput = function() {
                 bind:this={rangeslider}
                 style="background-size: {(parseInt(field.value) - parseInt(field.attributes.min)) * 100 / (parseInt(field.attributes.max) - parseInt(field.attributes.min)) + '% 100%'}  "/>
         <datalist id="tickmarks" class="text-black">
-            {#each Array(parseInt(field.attributes.max) - parseInt(field.attributes.min) + parseInt(field.attributes.step)) as _, i}
-                <option class="option{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}" value="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"
-                        label="{(i*parseInt(field.attributes.step))+parseInt(field.attributes.min)}"></option>
-            {/each}
+            <!-- Show different option values depending if the length is even or odd*/ -->
+            {#if Array(parseInt(field.attributes.max) - parseInt(field.attributes.min) + parseInt(field.attributes.step)).length % 2}
+                 <option class="option-{parseInt(field.attributes.min)}"
+                        value="{parseInt(field.attributes.min)}"
+                        label="{parseInt(field.attributes.min)}"></option>
+                <option class="option-{(parseInt(field.attributes.max)+parseInt(field.attributes.min))/2}"
+                        value="{(parseInt(field.attributes.max)+parseInt(field.attributes.min))/2}"
+                        label="{(parseInt(field.attributes.max)+parseInt(field.attributes.min))/2}"></option>
+                <option class="option-{parseInt(field.attributes.max)}"
+                        value="{parseInt(field.attributes.max)}"
+                        label="{parseInt(field.attributes.max)}"></option>
+            {:else }
+                 <option class="option-{parseInt(field.attributes.min)}"
+                        value="{parseInt(field.attributes.min)}"
+                        label="{parseInt(field.attributes.min)}"></option>
+                <option class="option-{parseInt(field.attributes.max)}"
+                        value="{parseInt(field.attributes.max)}"
+                        label="{parseInt(field.attributes.max)}"></option>
+            {/if}
         </datalist>
-            <p>Value: <span id="demo"></span></p>
+
     </div>
+        <p class="{field.attributes.range_output}">{field.value}</p>
     </div>
     {:else if field.attributes.type === 'checkbox'}
      <div class="{defaultAttributes.classes}">

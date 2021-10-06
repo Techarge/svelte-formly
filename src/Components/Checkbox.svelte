@@ -6,7 +6,7 @@
   export let field = {};
   let values = [];
   const defaultAttributes = {
-    class: 'bg-white py-10px customised-checkbox',
+    class: 'bg-white py-10px px-5px md:px-15px customised-checkbox grid gap-4',
         div_class:"bg-light-grey m-auto md:py-4 md:px-8",
   };
   let classe = null;
@@ -56,7 +56,7 @@
   <div
     class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
   >
-     <label class="checkbox">
+     <label class="checkbox p-none">
   <span class="checkbox__input">
     <input
       type="checkbox"
@@ -71,7 +71,7 @@
         <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
     </span>
   </span>
-    <label>{item.name}</label>
+    <label class="p-none">{item.name}</label>
        </label>
   </div>
 {/each}

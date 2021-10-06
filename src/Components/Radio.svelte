@@ -67,7 +67,7 @@
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
-                    <label class="radio radio-before">
+                    <label class="radio radio-before p-none">
                          <span class="radio__input">
                     <input
                             type="radio"
@@ -80,21 +80,21 @@
                             on:input={onChangeValue}
                     /><span class="radio__control"></span>
                          </span>
-                    <label for={item.id}>{item.title}</label>
+                    <label class="p-none" for={item.id}>{item.title}</label>
                     </label>
                 </div>
             {/each}
         </div>
     </div>
 {:else}
-    <div class="{field.attributes.background_class} grid grid-cols-1 gap-2 py-10px">
+    <div class="{field.attributes.background_class} grid grid-cols-1 gap-4 py-10px">
     {#each items as item, i}
         <div
                 class={field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}
         >
-            <label class="radio radio-before">
+            <label class="radio radio-before p-none">
                          <span class="radio__input">
                                 <input
                     type="radio"
@@ -106,7 +106,7 @@
                     on:input={onChangeValue}
             /><span class="radio__control"></span>
                          </span>
-                    <label for={item.id}>{item.title}</label>
+                    <label class="p-none" for={item.id}>{item.title}</label>
                     </label>
         </div>
     {/each}

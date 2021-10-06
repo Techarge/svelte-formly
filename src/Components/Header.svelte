@@ -13,7 +13,7 @@
         readonly: false,
         description: '',
         div_class: 'bg-white m-auto md:py-4 md:px-8 text-black',
-        label_class: "text-24px"
+        label_class: "text-2xl"
     };
     const fieldAttributes = field.attributes ? field.attributes : {};
     field.attributes = {...defaultAttributes, ...fieldAttributes};

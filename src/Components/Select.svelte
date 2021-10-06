@@ -8,7 +8,7 @@
   export let field = {};
   const defaultAttributes = {
     id: '',
-    classes: 'bg-white py-10px',
+    classes: 'bg-white py-10px px-5px md:px-15px',
     disabled: false,
         div_class:"bg-light-grey m-auto md:py-4 md:px-8",
   };

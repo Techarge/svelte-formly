@@ -9,7 +9,7 @@
     const defaultAttributes = {
         type: 'text',
         id: '',
-        classes: 'bg-white py-10px px-2',
+        classes: 'bg-white py-10px px-5px md:px-15px',
         min: null,
         max: null,
         step: null,
@@ -265,7 +265,7 @@
     display: grid;
     grid-template-areas: "checkbox";
   }
-  .p-none {
+  :global(.p-none) {
       padding-bottom: 0px!important;
   }
   .customised-checkbox .checkbox__input > * {

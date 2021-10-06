@@ -2,7 +2,7 @@
     import {onMount} from 'svelte';
     import {validate} from '../Validation/index';
     import {valuesForm} from '../lib/stores.js';
-    import {preprocessField} from '../lib/helpers.js';
+    import {isRequired, preprocessField} from '../lib/helpers.js';
 
     // Import components.
     import Tag from './Tag.svelte';
@@ -33,15 +33,15 @@
         values = {
             ...values,
             [event.detail.name]: event.detail.value,
-            touched: event.detail.name,
         };
+
         let mylist = await Promise.all(
             listFields.map(async (field) => {
-                if (event.detail.value) {
-                    field.touched = true
-                }
                 if (field.name === event.detail.name) {
                     field.value = event.detail.value;
+                    if (event.detail.onmount !== true) {
+                        field.touched = true;
+                    }
                 }
                 if (field.preprocess) {
                     const fnc = field.preprocess;
@@ -57,6 +57,13 @@
                 return item.validation.dirty === true;
             }
         });
+        // const alltouched = mylist.find((item) => item.touched === false)
+        // if (alltouched === undefined) {
+        //     isValidForm = dirty ? false : true;
+        //     valuesForm.set({values, valid: isValidForm});
+        // } else {
+        //     valuesForm.set({values, valid: valuesForm["valid"]});
+        // }
         isValidForm = dirty ? false : true;
         valuesForm.set({values, valid: isValidForm});
         itemsField = mylist;
@@ -71,10 +78,10 @@
                     const fnc = field.preprocess;
                     field = await preprocessField(field, fields, values);
                 }
-                if( field.touched === undefined){
+                if (field.touched === undefined) {
                     field.touched = false;  // default: don't display error message initially
                 }
-                field = await validate(field);
+                //field = await validate(field);  // should not validate onload ...
                 values[`${field.name}`] = field.value;
                 return field;
             })
@@ -103,7 +110,9 @@
             {#if field.attributes}
                 {#if field.attributes.label}
                     <label for={field.id}
-                           class={field.attributes.label_class ? field.attributes.label_class : "label"}>{field.attributes.label}</label>
+                           class={field.attributes.label_class ? field.attributes.label_class : "label"}>{field.attributes.label}
+                        {#if isRequired(field)}*{/if}
+                    </label>
                 {/if}
             {/if}
             <!-- Field -->
@@ -145,18 +154,16 @@
                             tag={field.description.tag}
                             classes={field.description.classes ? field.description.classes : ''}
                     >
-                        {field.description.text}
+                        {field.description.text} {#if isRequired(field)}*{/if}
                     </Tag>
                 {/if}
             {/if}
 
             <!-- Error messages -->
-            {#if !isValidForm}
-                {#if field.touched && field.validation.errors.length > 0}
+            {#if (!isValidForm && field.touched) && field.validation.errors.length > 0}
                 {#each field.validation.errors as error}
                     <Message {error} messages={field.messages ? field.messages : []}/>
                 {/each}
-                {/if}
             {/if}
         </Tag>
     {/if}

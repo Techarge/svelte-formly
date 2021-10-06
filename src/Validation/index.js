@@ -41,8 +41,7 @@ export function validate (field) {
   let { value, rules, touched } = field;
   // value = value === undefined ? '' : value
 
-  touched = touched === undefined ? true : touched;
-
+  touched = touched === undefined ? false : touched;
   let valid = true;
   let rule;
   let errors = [];

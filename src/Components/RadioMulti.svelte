@@ -56,6 +56,7 @@
             dispatch('changeValue', {
                 name: field.name,
                 value: null,
+                onmount: true,  // prevent this control as registering as touched by a user
             });
         }
         if (field.attributes) {

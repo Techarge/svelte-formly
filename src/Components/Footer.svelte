@@ -40,6 +40,7 @@
     {#if field.value}
         {field.value}
     {/if}
+     <img src="{field.attributes.img_src}" class="header__logo", alt="{field.attributes.img_alt == undefined ? "footer": field.attributes.img_alt}">
     <svg class="m-auto" xmlns="http://www.w3.org/2000/svg" width="162px" height="34px" viewBox="0 0 240 50.2">
     <linearGradient id="SaySo_Logo_Gradient" gradientUnits="userSpaceOnUse" x1="-6.9708" y1="151.4701" x2="-5.9708" y2="151.4701" gradientTransform="matrix(240 0 0 -50.2 1673 7628.8999)">
         <stop offset="0" style="stop-color: #58FF96"/>

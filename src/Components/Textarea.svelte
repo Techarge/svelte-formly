@@ -8,7 +8,7 @@
   export let field = {};
   const defaultAttributes = {
     id: '',
-    classes: 'bg-white p-4',
+    classes: 'bg-white py-10px px-5px md:px-15px',
     min: null,
     max: null,
     step: null,

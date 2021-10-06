@@ -2,15 +2,15 @@
     import {afterUpdate, createEventDispatcher, onMount} from 'svelte';
     import clsx from 'clsx';
 
-    // Declar variables.
-    export let field = {};
-    let values = [];
-    const defaultAttributes = {
-        class: 'bg-white py-10px customised-checkbox',
-        div_class: "bg-light-grey m-auto md:py-4 md:px-8",
-    };
-    let classe = null;
-    let defaulClasses = null;
+  // Declar variables.
+  export let field = {};
+  let values = [];
+  const defaultAttributes = {
+    class: 'bg-white py-10px px-5px md:px-15px customised-checkbox grid gap-4',
+        div_class:"bg-light-grey m-auto md:py-4 md:px-8",
+  };
+  let classe = null;
+  let defaulClasses = null;
 
     // Dispatch.
     const dispatch = createEventDispatcher();
@@ -52,29 +52,30 @@
     });
 </script>
 <div class="{field.attributes.class}">
-    {#each field.extra.items as item, i}
-        <div class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '} >
-            <label class="checkbox" for="{item.id}">
-              <span class="checkbox__input">
-                <input
-                        id="{item.id}"
-                        type="checkbox"
-                        class={defaultAttributes.classes}
-                        value={item.checked ? item.checked : false}
-                        name={item.name}
-                        checked={item.checked ? item.checked : false}
-                        on:input={onChangeValue}
-                />
-                 <span class="checkbox__control">
-                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                    <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59'/></svg>
-                </span>
-              </span>
-                <label for="{item.id}">{item.name}</label>
-            </label>
-        </div>
-    {/each}
-</div>
+{#each field.extra.items as item, i}
+  <div
+    class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
+  >
+     <label class="checkbox p-none">
+  <span class="checkbox__input">
+    <input
+      type="checkbox"
+      class={defaultAttributes.classes}
+      value={item.checked ? item.checked : false}
+      name={item.name}
+      checked={item.checked ? item.checked : false}
+      on:input={onChangeValue}
+    />
+     <span class="checkbox__control">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+    </span>
+  </span>
+    <label class="p-none">{item.name}</label>
+       </label>
+  </div>
+{/each}
+  </div>
 <style>
 
     .customised-checkbox .checkbox {

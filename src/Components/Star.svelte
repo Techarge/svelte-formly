@@ -59,7 +59,7 @@
         if (stars.length > 0) {
             dispatch('changeValue', {
                 name: field.name,
-                value: 0,
+                value: null,
             });
         }
         if (field.attributes) {

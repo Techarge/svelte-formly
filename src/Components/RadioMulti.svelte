@@ -55,7 +55,7 @@
         if (items.length > 0) {
             dispatch('changeValue', {
                 name: field.name,
-                value: items[0].value,
+                value: null,
             });
         }
         if (field.attributes) {
@@ -101,7 +101,7 @@
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
-                    <label class="radio radio-before">
+                    <label class="radio radio-before" for="{topic.id}-{item.id}">
                          <span class="radio__input">
                     <input
                             type="radio"

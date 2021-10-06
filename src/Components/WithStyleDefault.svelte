@@ -178,7 +178,7 @@
     {/if}
     <!-- Error messages -->
     {#if !isValidForm}
-      {#if $form[field.name].validation.touched && $form[field.name].validation.errors.length > 0}
+      {#if $form[field.name].touched && $form[field.name].validation.errors.length > 0}
         {#each $form[field.name].validation.errors as error, index}
           <Message {error} messages={field.messages} />
         {/each}

@@ -71,6 +71,9 @@
                     const fnc = field.preprocess;
                     field = await preprocessField(field, fields, values);
                 }
+                if( field.touched === undefined){
+                    field.touched = false;  // default: don't display error message initially
+                }
                 field = await validate(field);
                 values[`${field.name}`] = field.value;
                 return field;
@@ -88,81 +91,83 @@
 </script>
 
 {#each listFields as field (field.name)}
-            {#if field.attributes.type === 'hidden'}
-            <Hidden {field}/>
-                {:else }
+    {#if field.attributes.type === 'hidden'}
+        <Hidden {field}/>
+    {:else }
 
-    <Tag
-            tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
-            classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey m-auto md:py-4 md:px-8 "   }
-    >
-        <!-- Label -->
-        {#if field.attributes}
-            {#if field.attributes.label}
-                    <label for={field.id} class={field.attributes.label_class ? field.attributes.label_class : "label"}>{field.attributes.label}</label>
+        <Tag
+                tag={field.prefix ? (field.prefix.tag ? field.prefix.tag : 'div') : 'div'}
+                classes={field.attributes.div_class ? field.attributes.div_class : "bg-light-grey m-auto md:py-4 md:px-8 "   }
+        >
+            <!-- Label -->
+            {#if field.attributes}
+                {#if field.attributes.label}
+                    <label for={field.id}
+                           class={field.attributes.label_class ? field.attributes.label_class : "label"}>{field.attributes.label}</label>
+                {/if}
             {/if}
-        {/if}
-        <!-- Field -->
+            <!-- Field -->
 
-        {#if field.type === 'input'}
-            <Input {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'textarea'}
-            <Textarea {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'select'}
-            <Select {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'autocomplete'}
-            <AutoComplete
-                    {field}
-                    on:changeValue={changeValueHander}
-                    on:onSelectItem
-            />
-        {:else if field.type === 'radio'}
-            <Radio {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'radio-multi'}
-            <RadioMulti {field} on:changeValue={changeValueHander}/>
-        {:else if field.type == 'checkbox'}
-            <Checkbox {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'file'}
-            <File {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'header'}
-            <Header {field}/>
-        {:else if field.type === 'sectionheader'}
-            <SectionHeader {field}/>
-        {:else if field.type === 'star'}
-            <Star {field} on:changeValue={changeValueHander}/>
-        {:else if field.type === 'footer'}
-            <Footer {field}/>
-        {/if}
-
-        <!-- Description -->
-        {#if field.description}
-            {#if field.description.text}
-                <Tag
-                        tag={field.description.tag}
-                        classes={field.description.classes ? field.description.classes : ''}
-                >
-                    {field.description.text}
-                </Tag>
+            {#if field.type === 'input'}
+                <Input {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'textarea'}
+                <Textarea {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'select'}
+                <Select {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'autocomplete'}
+                <AutoComplete
+                        {field}
+                        on:changeValue={changeValueHander}
+                        on:onSelectItem
+                />
+            {:else if field.type === 'radio'}
+                <Radio {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'radio-multi'}
+                <RadioMulti {field} on:changeValue={changeValueHander}/>
+            {:else if field.type == 'checkbox'}
+                <Checkbox {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'file'}
+                <File {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'header'}
+                <Header {field}/>
+            {:else if field.type === 'sectionheader'}
+                <SectionHeader {field}/>
+            {:else if field.type === 'star'}
+                <Star {field} on:changeValue={changeValueHander}/>
+            {:else if field.type === 'footer'}
+                <Footer {field}/>
             {/if}
-        {/if}
 
-        <!-- Error messages -->
-        {#if !isValidForm}
-            {#if field.validation.touched && field.validation.errors.length > 0}
+            <!-- Description -->
+            {#if field.description}
+                {#if field.description.text}
+                    <Tag
+                            tag={field.description.tag}
+                            classes={field.description.classes ? field.description.classes : ''}
+                    >
+                        {field.description.text}
+                    </Tag>
+                {/if}
+            {/if}
+
+            <!-- Error messages -->
+            {#if !isValidForm}
+                {#if field.touched && field.validation.errors.length > 0}
                 {#each field.validation.errors as error}
                     <Message {error} messages={field.messages ? field.messages : []}/>
                 {/each}
-            {/if}
-        {/if}
-    </Tag>
                 {/if}
+            {/if}
+        </Tag>
+    {/if}
 {/each}
 <style>
     /*Fixes as tailwind isn't working*/
     :global(.py-10px) {
-    padding: 15px 30px;
+        padding: 15px 30px;
     }
-       /* :global(.py-12px) {
-    padding: 12px 0px;
-    }*/
+
+    /* :global(.py-12px) {
+ padding: 12px 0px;
+ }*/
 </style>

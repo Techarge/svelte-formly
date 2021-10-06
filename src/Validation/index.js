@@ -38,12 +38,14 @@ export function validateFields (fn, storeValues) {
  * @param {configs field} field
  */
 export function validate (field) {
-  let { value, rules } = field
+  let { value, rules, touched } = field;
   // value = value === undefined ? '' : value
 
-  let valid = true
-  let rule
-  let errors = []
+  touched = touched === undefined ? true : touched;
+
+  let valid = true;
+  let rule;
+  let errors = [];
 
   if (rules) {
     rules.map(validator => {
@@ -74,9 +76,9 @@ export function validate (field) {
         }
       }
     })
-    return { ...field, validation: { errors, dirty: errors.length > 0 } }
+    return { ...field, validation: { errors, dirty: errors.length > 0 }, touched: touched }
   } else {
-    return { ...field, validation: { errors, dirty: false } }
+    return { ...field, validation: { errors, dirty: false}, touched: touched }
   }
 }
 

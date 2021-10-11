@@ -87,12 +87,12 @@
             <div></div>
         {/if}
         {#each items as item, i}
-            <div>
+            <div class="text-center">
                 {item.title}
             </div>
         {/each}
         {#each topics as topic, t}
-            <div>
+            <div class="text-center">
                 {topic.title}
             </div>
             {#each items as item, i}

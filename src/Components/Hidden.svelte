@@ -32,7 +32,7 @@
     function onChangerValue(event) {
         dispatch('changeValue', {
             name: field.name,
-            value: scanValue(field.attributes.type, event.target.value),
+            value: scanValue(field.attributes.type, event.target.value, event),
         });
     }
 

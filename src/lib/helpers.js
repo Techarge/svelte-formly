@@ -53,7 +53,11 @@ function getDefaultMessageError (messages, rule) {
   return message
 }
 
-function scanValue (type, value) {
+function scanValue (type, value, event) {
+  if (type === 'checkbox'){
+    return event.target.checked;
+  }
+
   let typeOfNumber = ['number', 'range']
   let newVal = null
   if (value) {

@@ -92,13 +92,13 @@
             </div>
         {/each}
         {#each topics as topic, t}
-            <div class="text-center">
+            <div class="text-center p-2">
                 {topic.title}
             </div>
             {#each items as item, i}
                 <div
                         id={topic.id}
-                        class="{field.extra.aligne === 'inline'
+                        class="grid grid-cols-1 text-center justify-items-center {field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >

@@ -144,8 +144,8 @@
 }
  .radio__input input {
 	 opacity: 0;
-	 width: 0;
-	 height: 0;
+	 width: 0.5em;
+	 height: 0.5em;
 }
  .radio-before .radio__control {
 	 display: grid;

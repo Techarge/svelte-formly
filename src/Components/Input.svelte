@@ -100,7 +100,7 @@
      <div class="{defaultAttributes.classes}">
       <div
     class="customised-checkbox">
-     <label class="checkbox">
+     <label class="checkbox" for={field.attributes.id}>
   <span class="checkbox__input">
    <input
             type={field.attributes.type}

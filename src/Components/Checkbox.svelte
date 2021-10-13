@@ -8,6 +8,7 @@
   const defaultAttributes = {
     class: 'bg-white py-10px px-5px md:px-15px customised-checkbox grid gap-4',
         div_class:"bg-light-grey m-auto md:py-4 md:px-8",
+
   };
   let classe = null;
   let defaulClasses = null;
@@ -56,7 +57,7 @@
   <div
     class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
   >
-     <label class="checkbox p-none">
+     <label for="checkbox-{i}" class="checkbox p-none" >
   <span class="checkbox__input">
     <input
       type="checkbox"
@@ -65,13 +66,14 @@
       name={item.name}
       checked={item.checked ? item.checked : false}
       on:input={onChangeValue}
+      id="checkbox-{i}"
     />
      <span class="checkbox__control">
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
         <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
     </span>
   </span>
-    <label class="p-none">{item.name}</label>
+    <label for="checkbox-{i}" class="p-none">{item.name}</label>
        </label>
   </div>
 {/each}

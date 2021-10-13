@@ -68,7 +68,7 @@
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
-                    <label class="radio radio-before p-none">
+                    <label class="radio radio-before p-none" for="{item.id}">
                          <span class="radio__input">
                     <input
                             type="radio"

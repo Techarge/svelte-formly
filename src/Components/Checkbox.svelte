@@ -2,16 +2,16 @@
     import {afterUpdate, createEventDispatcher, onMount} from 'svelte';
     import clsx from 'clsx';
 
-  // Declar variables.
-  export let field = {};
-  let values = [];
-  const defaultAttributes = {
-    class: 'bg-white py-10px px-5px md:px-15px customised-checkbox grid gap-4',
-        div_class:"bg-light-grey m-auto md:py-4 md:px-8",
+    // Declar variables.
+    export let field = {};
+    let values = [];
+    const defaultAttributes = {
+        class: 'bg-white py-10px px-5px md:px-15px customised-checkbox grid gap-4',
+        div_class: "bg-light-grey m-auto md:py-4 md:px-8",
 
-  };
-  let classe = null;
-  let defaulClasses = null;
+    };
+    let classe = null;
+    let defaulClasses = null;
 
     // Dispatch.
     const dispatch = createEventDispatcher();
@@ -40,7 +40,6 @@
                     {
                         name: i.name,
                         checked: i.checked ? i.checked : false,
-                        id: Math.floor((Math.random() * 10000) + 1)
                     },
                 ];
             });
@@ -52,33 +51,47 @@
         classe = clsx(field.attributes.classes, defaulClasses);
         field.attributes = {...defaultAttributes, ...field.attributes};
     });
+
+    function hashCode(string) {
+        var hash = 0;
+        if (string.length === 0) {
+            return hash;
+        }
+        for (var i = 0; i < string.length; i++) {
+            var char = string.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
+
 </script>
 <div class="{field.attributes.class}">
-{#each field.extra.items as item, i}
-  <div
-    class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
-  >
-     <label for="checkbox-{item.id}" class="checkbox p-none" >
+    {#each field.extra.items as item, i}
+        <div
+                class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
+        >
+            <label for="checkbox-{hashCode(field.attributes.label + i)}" class="checkbox p-none">
   <span class="checkbox__input">
     <input
-      type="checkbox"
-      class={defaultAttributes.classes}
-      value={item.checked ? item.checked : false}
-      name={item.name}
-      checked={item.checked ? item.checked : false}
-      on:input={onChangeValue}
-      id="checkbox-{item.id}"
+            type="checkbox"
+            class={defaultAttributes.classes}
+            value={item.checked ? item.checked : false}
+            name={item.name}
+            checked={item.checked ? item.checked : false}
+            on:input={onChangeValue}
+            id="checkbox-{hashCode(field.attributes.label + i)}"
     />
      <span class="checkbox__control">
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59'/></svg>
     </span>
   </span>
-    <label for="checkbox-{item.id}" class="p-none">{item.name}</label>
-       </label>
-  </div>
-{/each}
-  </div>
+                <label for="checkbox-{hashCode(field.attributes.label + i)}" class="p-none">{item.name}</label>
+            </label>
+        </div>
+    {/each}
+</div>
 <style>
 
     .customised-checkbox .checkbox {

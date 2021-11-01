@@ -40,6 +40,7 @@
                     {
                         name: i.name,
                         checked: i.checked ? i.checked : false,
+                        id: Math.floor((Math.random() * 10000) + 1)
                     },
                 ];
             });
@@ -57,7 +58,7 @@
   <div
     class={field.extra.aligne === 'inline' ? 'form-check-inline ' : 'form-check '}
   >
-     <label for="checkbox-{i}" class="checkbox p-none" >
+     <label for="checkbox-{item.id}" class="checkbox p-none" >
   <span class="checkbox__input">
     <input
       type="checkbox"
@@ -66,14 +67,14 @@
       name={item.name}
       checked={item.checked ? item.checked : false}
       on:input={onChangeValue}
-      id="checkbox-{i}"
+      id="checkbox-{item.id}"
     />
      <span class="checkbox__control">
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
         <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
     </span>
   </span>
-    <label for="checkbox-{i}" class="p-none">{item.name}</label>
+    <label for="checkbox-{item.id}" class="p-none">{item.name}</label>
        </label>
   </div>
 {/each}

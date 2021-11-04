@@ -78,7 +78,7 @@
 {#if topics.length == 0}
     Missing topics in this question!
 {:else}
-    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} grid-rows-{topics.length+1} justify-items-center bg-white text-black items-end py-4">
+    <div class="grid grid-flow-row gap-4 grid-cols-{items.length+1} items-center justify-items-center bg-white text-black items-end py-4">
         {#if field.error}
             <div class="grid grid-flow-row grid-cols-1">
                 <div class="italic text-red-400">{field.error}</div>

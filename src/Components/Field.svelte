@@ -97,7 +97,7 @@
     });
 </script>
 
-{#each listFields as field (field.name)}
+{#each listFields as field (field.attributes.id)}
     {#if field.attributes.type === 'hidden'}
         <Hidden {field}/>
     {:else }

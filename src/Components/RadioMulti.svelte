@@ -97,25 +97,25 @@
             </div>
             {#each items as item, i}
                 <div
-                        id={topic.id}
+                        id="{topic.id}-{field.attributes.id}-{i}"
                         class="grid grid-cols-1 text-center justify-items-center {field.extra.aligne === 'inline'
       ? 'form-check form-check-inline'
       : 'form-check'}"
                 >
-                    <label class="radio radio-before" for="{topic.id}-{item.id}">
+                    <label class="radio radio-before" for="{topic.id}-{item.id}-{field.attributes.id}">
                          <span class="radio__input">
                     <input
                             type="radio"
                             class="{defaultAttributes.classes} ml-0 "
-                            id={topic.id}-{item.id}
-                            name={topic.id}
+                            id={topic.id}-{item.id}-{field.attributes.id}
+                            name={field.name}-{topic.id}
                             value={item.value}
                             required={isRequired(field)}
                             checked={topic.value === field.value}
                             on:input={onChangeValue}
                     /><span class="radio__control"></span>
                          </span>
-                    <label for={topic.id}-{item.id} class="hidden">{item.title}</label>
+                    <label for={topic.id}-{item.id}-{field.attributes.id} class="hidden">{item.title}</label>
                     </label>
                 </div>
             {/each}

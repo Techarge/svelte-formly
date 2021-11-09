@@ -43,7 +43,9 @@
 
     // Change value.
     function onChangeValue(event) {
-        topic_answers[event.target.name] = event.target.value;
+        let converted_name = event.target.name
+        converted_name = converted_name.split("$$")[1]
+        topic_answers[converted_name] = event.target.value;
         dispatch('changeValue', {
             name: field.name,
             value: topic_answers,
@@ -108,7 +110,7 @@
                             type="radio"
                             class="{defaultAttributes.classes} ml-0 "
                             id={topic.id}-{item.id}-{field.attributes.id}
-                            name={field.name}-{topic.id}
+                            name={field.name}$${topic.id}
                             value={item.value}
                             required={isRequired(field)}
                             checked={topic.value === field.value}
